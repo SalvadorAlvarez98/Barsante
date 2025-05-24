@@ -195,50 +195,68 @@ section h2 {
 }
 
 
+/* Catálogos */
 .catalogos-container {
   display: flex;
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
   flex-wrap: wrap;
-  padding: 2rem;
-  background: #f4f4f4;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  flex-direction: row;
 }
 
 .catalogos-menu {
   flex: 1 1 200px;
-  padding-right: 2rem;
+  background-color: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 8px;
 }
 
 .catalogos-menu ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .catalogos-menu li {
-  margin-bottom: 1rem;
+  margin: 10px 0;
 }
 
 .catalogos-menu a {
+  color: white;
   text-decoration: none;
-  color: #111;
   font-weight: bold;
+  display: block;
+  padding: 10px;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 6px;
+  transition: background 0.3s;
 }
 
 .catalogos-menu a:hover {
-  text-decoration: underline;
+  background-color: rgba(255,255,255,0.3);
 }
 
 .catalogos-grid {
   flex: 3 1 600px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
 }
 
 .catalog-item {
-  text-align: center;
-  background: white;
+  background-color: rgba(255,255,255,0.1);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.catalog-item:hover {
+  transform: scale(1.03);
 }
 
 .catalog-item img {
@@ -249,13 +267,41 @@ section h2 {
 
 .catalog-item span {
   display: block;
-  padding: 0.8rem;
+  padding: 10px;
+  color: white;
   font-weight: bold;
-  color: #333;
-  background: #fafafa;
 }
 
 .catalog-item a {
   text-decoration: none;
   color: inherit;
+  display: block;
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .catalogos-container {
+    flex-direction: column;
+    padding: 20px 10px;
+  }
+
+  .catalogos-menu {
+    flex: 1 1 100%;
+    margin-bottom: 20px;
+  }
+
+  .catalogos-grid {
+    flex: 1 1 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .catalog-item span {
+    font-size: 1rem;
+  }
+
+  .catalogos-menu a {
+    font-size: 1rem;
+    text-align: center;
+  }
+}
+
