@@ -306,3 +306,15 @@ section h2 {
 }
 
 
+/* Ocultar grilla de imágenes en móviles */
+@media screen and (max-width: 768px) {
+  .catalogos-grid {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+}
+
+
+
