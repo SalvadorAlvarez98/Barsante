@@ -1,21 +1,34 @@
-const slides = document.querySelectorAll('.slide');
-const slideNumber = document.getElementById('slide-number');
-let current = 0;
-let intervalTime = 5000;
-let slideInterval;
+document.addEventListener("DOMContentLoaded", () => {
+  const sliders = document.querySelectorAll('.slider');
 
-function updateSlide(index) {
-  slides.forEach((slide, i) => {
-    slide.classList.toggle('active', i === index);
-    if (i !== index) slide.style.left = '100%';
+  function startSlider(sliderElement) {
+    const slides = sliderElement.querySelectorAll('.slide');
+    let index = 0;
+
+    setInterval(() => {
+      slides.forEach(slide => slide.classList.remove('active'));
+      index = (index + 1) % slides.length;
+      slides[index].classList.add('active');
+    }, 3000);
+  }
+
+  sliders.forEach(slider => {
+    if (slider.classList.contains('visible')) {
+      startSlider(slider);
+    }
   });
-  slideNumber.textContent = `${(index + 1).toString().padStart(2, '0')} / ${slides.length.toString().padStart(2, '0')}`;
-}
 
-function showNextSlide() {
-  current = (current + 1) % slides.length;
-  updateSlide(current);
-}
+  // Cambiar slider según la sección visible
+  window.addEventListener("hashchange", () => {
+    sliders.forEach(slider => slider.classList.remove('visible'));
+    const id = 'slider-' + location.hash.replace('#', '');
+    const activeSlider = document.getElementById(id);
+    if (activeSlider) {
+      activeSlider.classList.add('visible');
+      startSlider(activeSlider);
+    }
+  });
+});
 
 function showPrevSlide() {
   current = (current - 1 + slides.length) % slides.length;
