@@ -288,11 +288,11 @@ section h2 {
   .catalogos-menu {
     flex: 1 1 100%;
     margin-bottom: 20px;
+    width: 100%;
   }
 
   .catalogos-grid {
-    flex: 1 1 100%;
-    grid-template-columns: 1fr;
+    display: none;
   }
 
   .catalog-item span {
@@ -304,4 +304,5 @@ section h2 {
     text-align: center;
   }
 }
+
 
